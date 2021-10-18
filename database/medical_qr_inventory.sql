@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 18, 2021 at 10:44 PM
+-- Generation Time: Oct 18, 2021 at 10:45 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.1.26
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `medical_qr_inventory`
 --
+CREATE DATABASE IF NOT EXISTS `medical_qr_inventory` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `medical_qr_inventory`;
 
 -- --------------------------------------------------------
 
