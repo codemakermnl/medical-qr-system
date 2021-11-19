@@ -24,16 +24,144 @@ class CustomController extends CI_Controller
     
     }
 
+    public function getEquipmentType() {
+        $equipment_id = $this->input->get('equipment_type_id');
+        $result = $this->Global_model->get_data_with_query("equipment_type", "*", "equipment_type_id = " . $equipment_id );
+        print_r(json_encode($result));
+    }
+
+    public function getDesignations() {
+        
+        $result = $this->Global_model->get_all_data("designations", "*");
+        print_r(json_encode($result));
+    
+    }
+
+    public function getDesignation() {
+        $designation_id = $this->input->get('designation_id');
+        $result = $this->Global_model->get_data_with_query("designations", "*", "designation_id = " . $designation_id );
+        print_r(json_encode($result));
+    }
+
+    public function getEquipments() {
+        $result = $this->Custom_model->get_all_equipments();
+        print_r(json_encode($result));
+    
+    }
+
+    public function getEquipmentDetails() {
+        $result = $this->Custom_model->get_equipment_details($this->input->get('equipment_id'));
+        // echo $this->db->last_query();
+        print_r(json_encode($result));
+    }
+
+    public function getEquipment() {
+        $equipment_id = $this->input->get('equipment_id');
+        $result = $this->Custom_model->get_equipment($equipment_id);
+        print_r(json_encode($result));
+    }
+
     public function addEquipmentType() {
         $table = 'equipment_type';
         $data = array(
             'equipment_type' => $this->input->post('equipment_type'),
             'description' => $this->input->post('description'), 
-            'quantity' => $this->input->post('quantity')
+            'quantity' => 1
         );
         $response = $this->Global_model->insert_data($table, $data);
         print_r(json_encode($response));
 
+    }
+
+    public function addEquipment() {
+        $table = 'equipments';
+        $data = array(
+            'equipment_type_id' => $this->input->post('equipment_type_id'),
+            'designation_id' => $this->input->post('designation_id'), 
+            'model_number' => $this->input->post('model_number')
+        );
+        $response = $this->Global_model->insert_data($table, $data);
+        $equipment_id = $response;
+
+
+        $qrcodeGenerator = new QRCodeGenerator();
+        $length = 11;
+        $hash = substr(str_shuffle(str_repeat($x = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!?&^', ceil($length / strlen($x)))), 1, $length);
+        $generated_filename = $qrcodeGenerator->generate( $hash );
+        if( !$generated_filename ) {
+            $data = array(
+                'server_errors' => "QR code generation Failed. Please contact your system administrator."
+            );
+        }
+
+        $table = 'qr_codes';
+
+        $data = array(
+            'equipment_id' => $equipment_id,
+            'qr_code_path' =>  $generated_filename, 
+        );
+        $response = $this->Global_model->insert_data($table, $data);
+
+        if($response === "failed") {
+            $data = array(
+                'server_errors' => "Data insertion to database Failed. Please contact your system administrator."
+            );
+        }
+
+        print_r(json_encode($response));
+
+    }
+
+    public function addDesignation() {
+        $table = 'designations';
+        $data = array(
+            'designation_name' => $this->input->post('designation_name')
+        );
+        $response = $this->Global_model->insert_data($table, $data);
+        print_r(json_encode($response));
+    }
+
+    public function updateEquipment() {
+        $table = 'equipments';
+
+        $data = array(
+            'equipment_type_id' => $this->input->post('equipment_type_id'),
+            'designation_id' => $this->input->post('designation_id'), 
+            'model_number' => $this->input->post('model_number')
+        );
+
+        $field = 'equipment_id';
+        $where = $this->input->post('equipment_id');
+        $response = $this->Global_model->update_data($table, $data, $field, $where);
+        return $response;
+    }
+
+    public function updateEquipmentType() {
+        $table = 'equipment_type';
+
+        $data = array(
+            'equipment_type' => $this->input->post('equipment_type'),
+            'description' => $this->input->post('description'), 
+            'quantity' => 1
+        );
+
+        $field = 'equipment_type_id';
+        $where = $this->input->post('equipment_type_id');
+        $response = $this->Global_model->update_data($table, $data, $field, $where);
+        return $response;
+        return $response;
+    }
+
+    public function updateDesignation() {
+         $table = 'designations';
+        $data = array(
+            'designation_name' => $this->input->post('designation_name')
+        );
+
+        $field = 'designation_id';
+        $where = $this->input->post('designation_id');
+        $response = $this->Global_model->update_data($table, $data, $field, $where);
+        return $response;
     }
 
     public function register() {
@@ -64,28 +192,7 @@ class CustomController extends CI_Controller
         }
 
     
-        // $qrcodeGenerator = new QRCodeGenerator();
-        // $generated_filename = $qrcodeGenerator->generate( sha1($email) );
-        // if( !$generated_filename ) {
-        //     $data = array(
-        //         'server_errors' => "QR code generation Failed. Please contact your system administrator."
-        //     );
-
-        //     print("<pre>".print_r($data,true)."</pre>");
-        //     print("<pre>".print_r($response,true)."</pre>");
-        // }
-
-        // $table = 'qr_codes';
-        // $data = array(
-        //     'account_id' => $response,
-        //     'qr_code_path' =>  $generated_filename, 
-        // );
-        // $response = $this->Global_model->insert_data($table, $data);
-
-        // if($response === "failed") {
-        //     $data = array(
-        //         'server_errors' => "Data insertion to database Failed. Please contact your system administrator."
-        //     );
+        
 
         //     print("<pre>".print_r($data,true)."</pre>");
         //     print("<pre>".print_r($response,true)."</pre>");
@@ -192,6 +299,31 @@ class CustomController extends CI_Controller
             $result['status'] = "error";
         }
 
+        print_r(json_encode($result));
+    }
+
+
+    public function deleteDesignation() {
+        $table = "designations";
+        $field = "designation_id";
+        $where = $this->input->post("designation_id");
+        $result = $this->Global_model->delete_data($table, $field, $where);
+        print_r(json_encode($result));
+    }
+
+    public function deleteEquipmentType() {
+        $table = "equipment_type";
+        $field = "equipment_type_id";
+        $where = $this->input->post("equipment_type_id");
+        $result = $this->Global_model->delete_data($table, $field, $where);
+        print_r(json_encode($result));
+    }
+
+    public function deleteEquipment() {
+        $table = "equipments";
+        $field = "equipment_id";
+        $where = $this->input->post("equipment_id");
+        $result = $this->Global_model->delete_data($table, $field, $where);
         print_r(json_encode($result));
     }
 

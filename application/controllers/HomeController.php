@@ -77,6 +77,28 @@ class HomeController extends CI_Controller {
 		// print("<pre>".print_r($data['result'],true)."</pre>");
 	}
 
+	public function equipments()
+	{
+		$data['view'] =  "equipments";
+		$data['head'] = array(
+			"title"         =>  "Equipments Inventory | Medical Inventory System",
+			);
+		$this->load->view('layouts/template', $data);
+
+		// print("<pre>".print_r($data['result'],true)."</pre>");
+	}
+
+	public function designations()
+	{
+		$data['view'] =  "designations";
+		$data['head'] = array(
+			"title"         =>  "Designations | Medical Inventory System",
+			);
+		$this->load->view('layouts/template', $data);
+
+		// print("<pre>".print_r($data['result'],true)."</pre>");
+	}
+
 
 	public function changePassword()
 	{

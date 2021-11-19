@@ -16,10 +16,10 @@ Class QRCodeGenerator{
             //file path for store images
             $SERVERFILEPATH = './assets/qrcodeci/images/';
             $text = $qrtext;
-            $text1= substr($text, 0, 4);
+            $text1= substr($text, 0, 11);
             
             $folder = $SERVERFILEPATH;
-            $file_name1 = $text1."-Qrcode" . rand(2,200) . ".png";
+            $file_name1 = $text1."-Qrcode" . rand(2,300) . ".png";
             $file_name = $folder.$file_name1;
             QRcode::png($text,$file_name);
             

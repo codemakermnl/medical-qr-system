@@ -28,6 +28,20 @@ date_default_timezone_set('Asia/Taipei');
 			return $q->result();
 		}
 
+		function get_data_single($table, $select, $query) {
+			$this->db->select($select);
+			$this->db->from($table);
+			$this->db->where($query);
+			$q = $this->db->get();
+			if ($q->num_rows() > 0)
+			{
+				$row = $q->row(); 
+				return $row;
+			}
+
+			return null;
+		}
+
 
 		function get_data_with_where_query($table, $select, $query, $value)
 		{

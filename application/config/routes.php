@@ -57,15 +57,38 @@ $route['equipment-type'] = 'homeController/equipmentType';
 
 $route['signUp'] = 'homeController/signUp';
 $route['register'] = 'customController/register';
+$route['equipments'] = 'homeController/equipments';
+$route['designations'] = 'homeController/designations';
 
 
 // Ajax
 $route['ajax/get-all-users'] = 'customController/getAllUsers';
 $route['ajax/get-equipment-types'] = 'customController/getEquipmentTypes';
+$route['ajax/get-equipment-type'] = 'customController/getEquipmentType';
 $route['ajax/get-new-password'] = 'customController/getnewpassword';
+$route['ajax/get-designations'] = 'customController/getDesignations';
+$route['ajax/get-designation'] = 'customController/getDesignation';
+$route['ajax/get-equipments'] = 'customController/getEquipments';
+$route['ajax/get-equipment'] = 'customController/getEquipment';
+$route['ajax/get-equipment-details'] = 'customController/getEquipmentDetails';
+
 $route['ajax/login'] = 'globalController/validatelogin';
 $route['ajax/update-password'] = 'customController/updatepassword';
+$route['ajax/update-equipment'] = 'customController/updateEquipment';
+$route['ajax/update-equipment-type'] = 'customController/updateEquipmentType';
+$route['ajax/update-designation'] = 'customController/updateDesignation';
+
+
 $route['ajax/add-equipment-type'] = 'customController/addEquipmentType';
+$route['ajax/add-designation'] = 'customController/addDesignation';
+$route['ajax/add-equipment'] = 'customController/addEquipment';
+
+
+// deletes
+$route['ajax/delete-equipment'] = 'customController/deleteEquipment';
+$route['ajax/delete-equipment-type'] = 'customController/deleteEquipmentType';
+$route['ajax/delete-designation'] = 'customController/deleteDesignation';
+
 
 // api
 $route['api/v1/getUser'] = 'apiController/getUserData';

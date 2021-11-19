@@ -1,7 +1,7 @@
 <body>
 <div class="nav-top container-fluid">
 	<div class="row" >
-		<img class="nav-logo mx-3" src="<?=base_url()?>assets/img/logos/pnp_logo.png">
+		<img class="nav-logo mx-3" src="<?=base_url()?>assets/img/logos/logo.png">
 		<div class="col col-md-8 ">
 			<div class="div-nav-heading" >
 				<span class="nav-heading-top">
@@ -36,8 +36,15 @@
 				<li id="admin-home" class="nav-item">
 					<a class="nav-link nav-color" href="<?=base_url()?>home">Home <span class="sr-only">(current)</span></a>
 				</li>
+				
+				<li id="equipments" class="nav-item">
+					<a class="nav-link nav-color" href="<?=base_url()?>equipments">Equipments</a>
+				</li>
 				<li id="equipment-type" class="nav-item">
 					<a class="nav-link nav-color" href="<?=base_url()?>equipment-type">Equipment Type</a>
+				</li>
+				<li id="designations" class="nav-item">
+					<a class="nav-link nav-color" href="<?=base_url()?>designations">Designations</a>
 				</li>
 			<?php } elseif ( $position_id == 2) { ?>
 				<li id="submitted-reports" class="nav-item">
