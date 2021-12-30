@@ -10,7 +10,7 @@
 			</div>
 			<div class="div-nav-heading" >
 				<span class="nav-title">
-					<b>Medical Inventory QR System</b>
+					<b>Medical QR Code Inventory System</b>
 				</span>
 			</div>
 			
@@ -32,7 +32,7 @@
 	<div class="collapse navbar-collapse" id="navbarsExample03">
 		<ul class="navbar-nav mr-auto">
 			<?php $position_id = $this->session->userdata('position_id');
-			 	if ($position_id == 1) { ?>
+			 	if ($position_id == 1 || $position_id == 2 ) { ?>
 				<li id="admin-home" class="nav-item">
 					<a class="nav-link nav-color" href="<?=base_url()?>home">Home <span class="sr-only">(current)</span></a>
 				</li>
@@ -46,6 +46,19 @@
 				<li id="designations" class="nav-item">
 					<a class="nav-link nav-color" href="<?=base_url()?>designations">Designations</a>
 				</li>
+				<li id="reports" class="nav-item">
+					<a class="nav-link nav-color" href="<?=base_url()?>reports">Reports</a>
+				</li>
+				<li class="nav-item dropdown">
+					<a id="logs-anchor" class="nav-link nav-color dropdown-toggle" id="navbarDropdownLogs" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Logs
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownLogs">
+						<a id="borrowLogs" class="dropdown-item" href="<?=base_url()?>borrowLogs">Borrow Logs</a>
+						<a id="defectiveLogs" class="dropdown-item" href="<?=base_url()?>defective-logs">Defective Logs</a>
+					</div>
+					
+				</li>
 			<?php } elseif ( $position_id == 2) { ?>
 				<li id="submitted-reports" class="nav-item">
 					<a class="nav-link nav-active" href="<?=base_url()?>home">Home <span class="sr-only">(current)</span></a>
@@ -57,7 +70,7 @@
 		<ul class="navbar-nav">	
 			<li class="nav-item dropdown">
 				<a class="nav-link nav-color dropdown-toggle nav-user" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					<?= $this->session->userdata('username'); ?>
+					<?php echo $this->session->userdata('firstname') . ' ' . $this->session->userdata('last_name') ?>
 				</a>
 				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 					<!-- <a class="dropdown-item" href="<?=base_url()?>change-password">Change Password</a> -->

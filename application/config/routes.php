@@ -59,6 +59,10 @@ $route['signUp'] = 'homeController/signUp';
 $route['register'] = 'customController/register';
 $route['equipments'] = 'homeController/equipments';
 $route['designations'] = 'homeController/designations';
+$route['borrowLogs'] = 'homeController/borrowLogs';
+$route['reports'] = 'homeController/reports';
+$route['defective-logs'] = 'homeController/defectiveLogs';
+$route['fixes-logs'] = 'homeController/fixesLogs';
 
 
 // Ajax
@@ -71,6 +75,8 @@ $route['ajax/get-designation'] = 'customController/getDesignation';
 $route['ajax/get-equipments'] = 'customController/getEquipments';
 $route['ajax/get-equipment'] = 'customController/getEquipment';
 $route['ajax/get-equipment-details'] = 'customController/getEquipmentDetails';
+$route['ajax/get-borrow-logs'] = 'customController/getBorrowLogs';
+$route['ajax/get-defect-logs'] = 'customController/getDefectiveLogs';
 
 $route['ajax/login'] = 'globalController/validatelogin';
 $route['ajax/update-password'] = 'customController/updatepassword';
@@ -90,10 +96,28 @@ $route['ajax/delete-equipment-type'] = 'customController/deleteEquipmentType';
 $route['ajax/delete-designation'] = 'customController/deleteDesignation';
 
 
+$route['ajax/get-weekly-borrows'] = 'CustomController/getWeeklyBorrows';
+$route['ajax/get-monthly-borrows'] = 'CustomController/getMonthlyBorrows';
+$route['ajax/get-yearly-borrows'] = 'CustomController/getYearlyBorrows';
+
+$route['ajax/get-totals'] = 'CustomController/getTotals';
+$route['ajax/get-reports'] = 'CustomController/getReports';
+
+$route['ajax/set-defective'] = 'CustomController/setEquipmentAsDefective';
+$route['ajax/set-fixed'] = 'CustomController/setEquipmentAsFixed';
+
+
 // api
 $route['api/v1/getUser'] = 'apiController/getUserData';
 $route['api/v1/employee-sign-up'] = 'apiController/employeeSignUp';
 $route['api/v1/validate-employee-login'] = 'apiController/validateEmployeeLogin';
+$route['api/v1/getEquipment'] = 'apiController/getEquipment';
+$route['api/v1/getDesignations'] = 'customController/getDesignations';
+$route['api/v1/borrow-equipment'] = 'apiController/borrowEquipment';
+$route['api/v1/getBorrowedEquipment'] = 'apiController/getBorrowedEquipment';
+$route['api/v1/getAllEquipments'] = 'customController/getEquipments';
+$route['api/v1/return-equipment'] = 'apiController/returnEquipment';
+$route['api/v1/report-equipment'] = 'apiController/reportEquipment';
 
 $route['logout'] = 'homeController/logout';
 $route['404_override'] = '';

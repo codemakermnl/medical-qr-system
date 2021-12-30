@@ -3,7 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Medical Inventory QR System</title>
+	<title>Medical QR Inventory System</title>
+	 <link rel="icon" href="<?=base_url()?>assets/img/logos/logo.png"/>
 	<link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/css/bootstrap.min.css">
 	<link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/css/layouts.css">
@@ -30,7 +31,7 @@
 <body>
 	<div class="nav-top container-fluid">
 		<div class="row" >
-			<img class="nav-logo mx-3" src="<?=base_url()?>assets/img/logos/pnp_logo.png">
+			<img class="nav-logo mx-3" src="<?=base_url()?>assets/img/logos/logo.png">
 			<div class="col col-md-8 ">
 				<div class="div-nav-heading" >
 					<span class="nav-heading-top">
@@ -39,7 +40,7 @@
 				</div>
 				<div class="div-nav-heading" >
 					<span class="nav-title">
-						<b>Medical Inventory QR System</b>
+						<b>Medical QR Inventory System</b>
 					</span>
 				</div>
 
@@ -100,8 +101,8 @@
 
 
 						<div class="form-group">
-		                  	<label for="employee_id">Employee ID</label>
-		                  	<input type="text" class="form-control" formControlName="employee_id" id="employee_id" name="employee_id" placeholder="Employee ID"  required />
+		                  	<label for="email">Email</label>
+		                  	<input type="email" class="form-control" formControlName="email" id="email" name="email" placeholder="Email"  required />
 		                 </div>
 
 
@@ -178,7 +179,7 @@
  		var password = $('#password').val();
  		var confirmPassword = $('#cpassword').val();
  		var valid = true;
- 		var fields = ['fname', 'lname', 'complete_address', 'employee_id', 'password'];
+ 		var fields = ['fname', 'lname', 'complete_address', 'email', 'password'];
  		var fieldsValid = true;
  		var message = '';
 

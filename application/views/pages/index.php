@@ -4,9 +4,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Medical Inventory QR System</title>
+  <title>Medical QR Inventory System</title>
   <base href="/">
-  <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
+   <link rel="icon" href="<?=base_url()?>assets/img/logos/logo.png"/>
 
   <link rel="stylesheet" href="<?=base_url()?>assets/css/styles.css" type="text/css">
 
@@ -48,7 +48,7 @@
                   <div class="alert-container-content hidden"></div>
                   <form id="login-form">
                     <div class="form-group mt-3">
-                      <input type="text" class="form-control standard-form-field username login-input" id="username" name="username" placeholder="EMPLOYEE ID" style="width: 350px;">
+                      <input type="email" class="form-control standard-form-field username login-input" id="username" name="username" placeholder="EMAIL" style="width: 350px;">
                     </div>
                     <div class="form-group">
                       <input type="password" class="form-control standard-form-field password login-input" id="password" name="password" placeholder="PASSWORD" style="width: 350px;">

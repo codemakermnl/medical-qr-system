@@ -5,9 +5,9 @@ class GlobalController extends CI_Controller
 {
     public function validateLogin()
     {
-        $employee_id = (isset($_POST['username'])) ? $_POST['username'] : '';
+        $email = (isset($_POST['username'])) ? $_POST['username'] : '';
         $password = (isset($_POST['password'])) ? $_POST['password'] : '';
-        $login = $this->Global_model->get_data_with_query('users', '*', 'employee_id ="' .$employee_id. '" AND password="'.sha1($password).'"');
+        $login = $this->Global_model->get_data_with_query('users', '*', 'email ="' .$email. '" AND password="'.sha1($password).'"');
 
         // print("<pre>".print_r($this->input->post(),true)."</pre>");
 

@@ -74,6 +74,15 @@ date_default_timezone_set('Asia/Taipei');
 			return $q->result();
 		}
 
+		function get_count($table, $select, $where, $join_table, $join_on) {
+			$this->db->select($select);
+			$this->db->from($table);
+			$this->db->join($join_table, $join_on);
+			$this->db->where($where);
+			$q = $this->db->get();
+			return $q->result();
+		}
+
 		function insert_data($table, $data){
 
 			$this->db->insert($table, $data);

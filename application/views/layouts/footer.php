@@ -1,6 +1,6 @@
 		<footer class="footer">
 			<div class="container text-center">
-				<span class="footer-copyright">Copyright &copy; <?= date('Y') ?> Medical Inventory System. All Rights Reserved.</span>
+				<span class="footer-copyright">Copyright &copy; <?= date('Y') ?> Medical QR Code Inventory System. All Rights Reserved.</span>
 			</div>
 		</footer>
 

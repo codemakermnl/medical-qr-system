@@ -88,6 +88,50 @@ class HomeController extends CI_Controller {
 		// print("<pre>".print_r($data['result'],true)."</pre>");
 	}
 
+	public function borrowLogs()
+	{
+		$data['view'] =  "borrow-logs";
+		$data['head'] = array(
+			"title"         =>  "Borrow Logs | Medical Inventory System",
+			);
+		$this->load->view('layouts/template', $data);
+
+		// print("<pre>".print_r($data['result'],true)."</pre>");
+	}
+
+	public function reports()
+	{
+		$data['view'] =  "reports";
+		$data['head'] = array(
+			"title"         =>  "Reports | Medical Inventory System",
+			);
+		$this->load->view('layouts/template', $data);
+
+		// print("<pre>".print_r($data['result'],true)."</pre>");
+	}
+
+	public function defectiveLogs()
+	{
+		$data['view'] =  "defective-logs";
+		$data['head'] = array(
+			"title"         =>  "Defective Logs | Medical Inventory System",
+			);
+		$this->load->view('layouts/template', $data);
+
+		// print("<pre>".print_r($data['result'],true)."</pre>");
+	}
+
+	public function fixesLogs()
+	{
+		$data['view'] =  "fixes-logs";
+		$data['head'] = array(
+			"title"         =>  "Fixes Logs | Medical Inventory System",
+			);
+		$this->load->view('layouts/template', $data);
+
+		// print("<pre>".print_r($data['result'],true)."</pre>");
+	}
+
 	public function designations()
 	{
 		$data['view'] =  "designations";
